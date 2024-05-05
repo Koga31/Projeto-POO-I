@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "string": "cpp",
+        "memory": "cpp",
+        "exception": "cpp",
+        "*.tcc": "cpp",
+        "memory_resource": "cpp",
+        "type_traits": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp"
+    },
+    "C_Cpp.dimInactiveRegions": false
+}
