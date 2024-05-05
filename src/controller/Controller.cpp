@@ -18,7 +18,7 @@ Controller::~Controller() {}
 
 
 void Controller::start() {
-	vector<string> menuItens { "Estudantes", "Professores", "Disciplinas", "Relatórios",
+	vector<string> menuItens { "Estudantes", "Professores", "Disciplinas", "Relatorios",
 			"Ajuda", "Sobre", "Sai do programa" };
 	vector<void (Controller::*)()> functions { &Controller::actionStudents,
 			&Controller::actionTeachers, &Controller::actionSubjects, &Controller::actionReports,&Controller::actionHelp, &Controller::actionAbout };
