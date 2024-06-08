@@ -6,6 +6,7 @@ professores. Uma pessoa deve possuir nome, idade e telefone. */
 #define INCLUDE_PERSON_HPP
 
 #include <string>
+#include <memory>
 
 using namespace std;
 
@@ -18,9 +19,14 @@ public:
 	void setName(string name);
 	void setAge(int age);
 	void setPhone(string phone);
-	string getName();
-	int getAge();
-	string getPhone();
+	string getName() const;
+	int getAge() const;
+	string getPhone() const;
+	
+	virtual string getIdentifier()=0;
+
+	virtual void printInfo()=0;
+	
 	virtual ~Person();
 };
 

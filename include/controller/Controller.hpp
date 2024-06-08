@@ -25,22 +25,34 @@ private:
 	void actionViewStudents(void);
 	void actionSearchRA(void);
 	void actionChangeStudent(void);
+	void actionDeleteStudent();
 
 
 	void actionInsertTeacher();
 	void actionViewTeacher(void);
 	void actionSearchID(void);
 	void actionChangeTeacher(void);
+	void actionDeleteTeacher();
 
 
 	void actionInsertSubject();
 	void actionInsertClassTeacher();
 	void actionInsertClassStudent();
 	void actionViewSubject(void);
+	void actionDeleteSubject();
 	
 
 	void actionReturnMenu(void);
 	void actionToDo(void);
+
+    bool verifyString(const string& str);
+    bool verifyName(const string& name);
+    bool verifyMajor(const string& major);
+    bool verifyAge(const int& age);
+    bool verifyPhone(const string& phone);
+    bool verifyRa(const string& ra);
+	bool verifyId(const string& id);
+	bool verifySalary(const float& salary);
 	
 public:
 	Controller();

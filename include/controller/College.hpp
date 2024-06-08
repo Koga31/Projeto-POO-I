@@ -25,6 +25,9 @@ public:
 	static void setTeachers(map<string, shared_ptr<Person>> &teachers);
 	static vector<shared_ptr<ClassDTO>> & getSubjects();
 	static void setSubjects(vector<shared_ptr<ClassDTO>> &subject);
+	static bool doesNotHaveStudent(const string &ra);
+	static bool doesNotHaveTeacher(const string &id);
+	static bool doesNotHaveClass(const string &code, const int &year, const int &semester);
 };
 
 #endif

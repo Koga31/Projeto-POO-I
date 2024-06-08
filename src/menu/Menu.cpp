@@ -149,7 +149,4 @@ void Menu::setZeroForLastOpt(bool zeroForLastOpt)
 	this->zeroForLastOpt = zeroForLastOpt;
 	}
 
-Menu::~Menu()
-	{
-	// Nothing to do
-	}
+Menu::~Menu(){}

@@ -7,11 +7,8 @@ ClassDTO::~ClassDTO(){}
 void ClassDTO::setTeacher(string teacher){this->teacher=teacher;}
 string ClassDTO::getTeacher(){return teacher;}
 
-vector<string>& ClassDTO::getClassroomStudents() 
-{
-	return classroomStudents;
+void ClassDTO::setClassGradesStudents(const map<string, float>& classroomStudents){
+	this->classGradesStudents = classroomStudents;
 }
 
-void ClassDTO::setClassroomStudents(vector<string> & _classroomStudents) {
-	classroomStudents = _classroomStudents;
-}
+map<string, float>& ClassDTO::getClassGradesStudents(){return classGradesStudents;}

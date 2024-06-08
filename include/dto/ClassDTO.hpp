@@ -6,20 +6,21 @@
 #include "StudentDTO.hpp"
 #include <memory>
 #include <vector>
+#include <map>
 
 class ClassDTO : public Semester, public Subject 
 {
     private:
         string teacher;
-        vector<string> classroomStudents;
+        map<string, float> classGradesStudents;
         
     public:
-        ClassDTO(string _code="", string _name="", string _description="", int year=0, int semesterNumber=0): Subject(_code, _name, _description), Semester(year, semesterNumber){}
+        ClassDTO(string code="", string name="", string description="", int year=0, int semesterNumber=0): Subject(code, name, description), Semester(year, semesterNumber){}
         virtual ~ClassDTO();
         void setTeacher(string teacher);
         string getTeacher();
-        void setClassroomStudents(vector<string>& classroomStudents);
-        vector<string>& getClassroomStudents();
+        void setClassGradesStudents(const map<string, float>& classGradesStudents);
+        map<string, float>& getClassGradesStudents();
 };
 
 #endif

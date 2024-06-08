@@ -1,7 +1,3 @@
-/*Classe responsável pelo acesso aos dados dos estudantes, como operações
-de criar, ler, atualizar e deletar. Herda da classe AbstractDAO com o tipo
-StudentDTO. */
-
 #ifndef STUDENTDAO_HPP
 #define STUDENTDAO_HPP
 #include "../dao/AbstractDAO.hpp"
@@ -10,7 +6,6 @@ StudentDTO. */
 using namespace std;
 
 class StudentDAO : public AbstractDAO<StudentDTO> {
-
     public:
     StudentDAO(){}
     virtual ~StudentDAO(){}
@@ -18,9 +13,9 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
     //void add(argumentos) override: Adiciona um novo estudante a estrutura de dados students em College.
 
     void add(const shared_ptr<StudentDTO>& student) override;
-    void read(shared_ptr<StudentDTO>& student) override;
-    void update(StudentDTO object) override;
-    void del(const StudentDTO object) override;
+    void read(const shared_ptr<StudentDTO> &student) override;
+    void update(const shared_ptr<StudentDTO> &student, const int sel) override;
+    void del(const shared_ptr<StudentDTO> &student) override;
 
 };
 

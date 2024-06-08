@@ -11,11 +11,9 @@ class TeacherDAO : public AbstractDAO<TeacherDTO>
     virtual ~TeacherDAO(){}
 
     void add(const shared_ptr<TeacherDTO>& teacher) override;
-    void read(shared_ptr<TeacherDTO>& teacher) override;
-    void update(TeacherDTO teacher) override;
-    void del(const TeacherDTO teacher) override;
-
-
+    void read(const shared_ptr<TeacherDTO>& teacher) override;
+    void update(const shared_ptr<TeacherDTO>& teacher, const int sel) override;
+    void del(const shared_ptr<TeacherDTO>& teacher) override;
 };
 
 #endif

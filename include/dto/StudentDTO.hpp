@@ -6,6 +6,7 @@ um curso e um RA para identificação. */
 #ifndef STUDENTDTO_HPP
 #define STUDENTDTO_HPP
 #include "Person.hpp"
+#include <memory>
 
 class StudentDTO : public Person {
     private:
@@ -17,8 +18,10 @@ class StudentDTO : public Person {
         virtual ~StudentDTO();
         void setRa(string ra);
         void setMajor(string major);
-        string getRa();
-        string getMajor();
+        string getRa() const;
+        string getMajor() const;
+        void printInfo();
+        string getIdentifier();
 };
 
 #endif

@@ -20,7 +20,7 @@ public:
     virtual ~Subject();
     void setCode(string code);
     void setName(string name);
-    void setDescription(string syllabus);
+    void setDescription(string description);
     string  getCode();
     string  getName();
     string  getDescription();

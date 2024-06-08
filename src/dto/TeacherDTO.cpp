@@ -4,8 +4,19 @@ TeacherDTO::~TeacherDTO(){}
 
 void TeacherDTO::setId(string id){this->id=id;}
 void TeacherDTO::setSalary(float salary){this->salary=salary;}
-void TeacherDTO::setSubjects(map<string,shared_ptr<Subject>> subjects){this->subjects=subjects;}
 
-string TeacherDTO::getId(){return id;}
-float TeacherDTO::getSalary(){return salary;}
-map<string, shared_ptr<Subject>>& TeacherDTO::getSubjects(){return subjects;}
+string TeacherDTO::getId() const {return id;}
+float TeacherDTO::getSalary() const {return salary;}
+
+void TeacherDTO::printInfo(){
+    cout << "ID: " << this->getId() << endl;
+    cout << "Nome: " << this->getName() << endl;
+    cout << "Idade: " << this->getAge() << endl;
+    cout << "Salário: " << this->getSalary() << endl;
+    cout << "Telefone: " << this->getPhone() << endl;
+    cout << "--------------------------------------" << endl;
+}
+
+string TeacherDTO::getIdentifier(){
+    return id;
+}

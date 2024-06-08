@@ -22,9 +22,9 @@ class AbstractDAO {
     virtual ~AbstractDAO(){}
     
     virtual void add(const shared_ptr<T>& object)=0;
-    virtual void read(shared_ptr<T>& object)=0;
-    virtual void update(T object)=0;
-    virtual void del(const T object)=0;
+    virtual void read(const shared_ptr<T>& object)=0;
+    virtual void update(const shared_ptr<T>& object, const int sel)=0;
+    virtual void del(const shared_ptr<T>& object)=0;
 
 };
 

@@ -6,15 +6,16 @@
 using namespace std;
 
 class ClassDAO : public AbstractDAO<ClassDTO>{
-
     public:
     ClassDAO(){}
     virtual ~ClassDAO(){}
 
-    void add(const shared_ptr<ClassDTO>& classes)override;
-    void read(shared_ptr<ClassDTO>& classes)override;
-    void update(ClassDTO subject)override;
-    void del(const ClassDTO subject)override;
+    void add(const shared_ptr<ClassDTO>& classObj)override;
+    void read(const shared_ptr<ClassDTO>& classObj)override;
+    void update(const shared_ptr<ClassDTO>& classObj, const int sel)override;
+    void del(const shared_ptr<ClassDTO> &classObj)override;
+
+    vector<shared_ptr<ClassDTO>>::iterator findClassIterator(const shared_ptr<ClassDTO> &classObj);
 
     void addTeacher();
     void addStudent();
