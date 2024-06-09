@@ -78,8 +78,10 @@ void ClassDAO::addStudent()
 }
 
 
-void ClassDAO::update(const shared_ptr<ClassDTO>& classObj, const int sel){
-    cout << "TODO" << endl;
+void ClassDAO::update(const shared_ptr<ClassDTO>& classObj){
+    shared_ptr<ClassDAO> ClassDAO;
+    College::getSubjects().erase(findClassIterator(classObj));
+    College::getSubjects().push_back(classObj);
 }
 
 void ClassDAO::del(const shared_ptr<ClassDTO> &classObj){

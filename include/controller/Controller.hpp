@@ -39,6 +39,7 @@ private:
 	void actionInsertClassTeacher();
 	void actionInsertClassStudent();
 	void actionViewSubject(void);
+	void actionChangeSubject();
 	void actionDeleteSubject();
 	
 

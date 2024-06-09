@@ -12,7 +12,7 @@ class ClassDAO : public AbstractDAO<ClassDTO>{
 
     void add(const shared_ptr<ClassDTO>& classObj)override;
     void read(const shared_ptr<ClassDTO>& classObj)override;
-    void update(const shared_ptr<ClassDTO>& classObj, const int sel)override;
+    void update(const shared_ptr<ClassDTO>& classObj)override;
     void del(const shared_ptr<ClassDTO> &classObj)override;
 
     vector<shared_ptr<ClassDTO>>::iterator findClassIterator(const shared_ptr<ClassDTO> &classObj);

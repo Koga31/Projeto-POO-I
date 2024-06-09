@@ -61,10 +61,10 @@ void Controller::actionSubjects()
 {
 	vector<string> menuSubjects { "Inserir Turma",
 			"Inserir Professor", "Inserir Aluno",
-			"Visualizar todas as disciplinas", "Excluir disciplina", "Voltar ao menu principal" };
+			"Visualizar todas as disciplinas", "Alterar disciplina", "Excluir disciplina", "Voltar ao menu principal" };
 	vector<void (Controller::*)()> functions { &Controller::actionInsertSubject,
 			&Controller::actionInsertClassTeacher, &Controller::actionInsertClassStudent,
-			&Controller::actionViewSubject, &Controller::actionDeleteSubject, &Controller::actionReturnMenu };
+			&Controller::actionViewSubject, &Controller::actionChangeSubject, &Controller::actionDeleteSubject, &Controller::actionReturnMenu };
 	launchActions("Menu Disciplinas", menuSubjects, functions);
 }
 
@@ -260,14 +260,87 @@ void Controller::actionChangeStudent(void) {
     else 
     {
         
-        unique_ptr<StudentDAO> studentDAO = make_unique<StudentDAO>();
-        cout << "Informacoes: " << endl;
-        College::getStudents().at(ra)->printInfo();
-        cout << "Opcoes de Alteracao:\n 1-Nome.\n 2-Idade.\n 3-Curso.\n 4-Telefone." << endl;
-        cin >> sel;
+    unique_ptr<StudentDAO> studentDAO = make_unique<StudentDAO>();
+    cout << "Informacoes: " << endl;
+    College::getStudents().at(ra)->printInfo();
+    cout << "Forneca os dados alterados:" << endl;
+        
+    string name;
+    int age;
+    string phone;
+    string major;
+
+    while(1){
+        Utils::printMessage("Digite o novo nome: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> name;
+        if(name == "0"){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifyName(name)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
+
+    while(1){
+        Utils::printMessage("Digite a nova idade: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> age;
+        if(age == 0){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifyAge(age)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
+
+    while(1){
+        Utils::printMessage("Digite o novo telefone: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> phone;
+        if(phone == "0"){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifyPhone(phone)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
+
+    while(1){
+        Utils::printMessage("Digite o novo curso: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> major;
+        if(major == "0"){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifyMajor(major)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
+
         shared_ptr<StudentDTO> studentDTO = make_shared<StudentDTO>();
         studentDTO->setRa(ra);
-        studentDAO->update(studentDTO, sel);      
+        studentDTO->setName(name);
+        studentDTO->setAge(age);
+        studentDTO->setPhone(phone);
+        studentDTO->setMajor(major);
+        studentDAO->update(studentDTO);      
     }
     }
 }
@@ -443,11 +516,82 @@ void Controller::actionChangeTeacher(void) {
         unique_ptr<TeacherDAO> teacherDAO = make_unique<TeacherDAO>();
         cout << "Informacoes: " << endl;
         College::getTeachers().at(id)->printInfo();
-        cout << "Opcoes de Alteracao:\n 1-Nome.\n 2-Idade.\n 3-Salario.\n 4-Telefone." << endl;
-        cin >> sel;
+        cout << "Digite os novos dados:" << endl;
+        	string name;
+    int age;
+    string phone;
+    float salary;
+
+    while(1){
+        Utils::printMessage("Digite o nome: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> name;
+        if(name == "0"){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifyName(name)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
+
+    while(1){
+        Utils::printMessage("Digite a idade: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> age;
+        if(age == 0){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifyAge(age)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
+
+    while(1){
+        Utils::printMessage("Digite o telefone: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> phone;
+        if(phone == "0"){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifyPhone(phone)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
+
+    while(1){
+        Utils::printMessage("Digite o salário: ");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> salary;
+        if(salary == 0){
+            Utils::printMessage("Operação cancelada.");
+            return;
+        }else{
+            if(verifySalary(salary)){
+                break;
+            }else{
+                continue;
+            }
+        }
+    }
         shared_ptr<TeacherDTO> teacherDTO = make_shared<TeacherDTO>();
         teacherDTO->setId(id);
-        teacherDAO->update(teacherDTO, sel);      
+        teacherDTO->setAge(age);
+        teacherDTO->setName(name);
+        teacherDTO->setPhone(phone);
+        teacherDTO->setSalary(salary);
+        teacherDAO->update(teacherDTO);      
     }
     }
 }
@@ -611,6 +755,89 @@ void Controller::actionDeleteSubject(){
 	}
 }
 
+void Controller::actionChangeSubject()
+{
+    string code;
+	int year;
+	int semester;
+    while(1){
+		Utils::printMessage("Insira o código da Turma a ser modificada:");
+		cout << "Digite 0 para cancelar a operação." << endl;
+		cin >> code;
+		Utils::printMessage("Insira o ano da Turma a ser modificada:");
+		cout << "Digite 0 para cancelar a operação." << endl;
+		cin >> year;
+		Utils::printMessage("Insira o semestre da Turma a ser modificada:");
+		cout << "Digite 0 para cancelar a operação." << endl;
+		cin >> semester;
+		if(code == "0"){
+			cout << "Operação cancelada." << endl;
+			return;
+		}
+        else
+        {
+			if(College::doesNotHaveClass(code, year, semester)){
+				cout << "Turma inexistente!" << endl;
+				continue;
+			}
+            else
+            {
+                string name;
+                string description;
+                string teacher;       
+
+    while(1){
+        Utils::printMessage("Digite o novo nome da Disciplina:");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> name;
+        if(name == "0"){
+            cout << "Operação cancelada." << endl;
+            return;
+        }
+        if(verifyName(name)){
+            break;
+        }else{
+            continue;
+        }
+        }
+    Utils::printMessage("Digite a nova ementa:");
+    cout << "Digite 0 para cancelar a operação." << endl;
+    cin >> description;
+    if(description == "0"){
+        cout << "Operação cancelada." << endl;
+        return;
+    }
+    while(1){
+        Utils::printMessage("Digite o nome do novo professor da Disciplina:");
+        cout << "Digite 0 para cancelar a operação." << endl;
+        cin >> teacher;
+        if(teacher == "0"){
+            cout << "Operação cancelada." << endl;
+            return;
+        }
+        if(verifyName(teacher)){
+            break;
+        }else{
+            continue;
+        }
+        }
+    
+				shared_ptr<ClassDTO> classDTO = make_shared<ClassDTO>();
+				classDTO->setCode(code);
+				classDTO->setYear(year);
+				classDTO->setSemesterNumber(semester);
+                classDTO->setName(name);
+                classDTO->setDescription(description);
+                classDTO->setTeacher(teacher);
+				shared_ptr<ClassDAO> classDAO = make_shared<ClassDAO>();
+				classDAO->update(classDTO);
+				cout << "Turma modificada." << endl;
+				break;
+			}
+		}
+	}
+
+}
 
 //Menu ------------------------------------------------------------------------
 

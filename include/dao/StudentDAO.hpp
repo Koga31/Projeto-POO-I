@@ -14,7 +14,7 @@ class StudentDAO : public AbstractDAO<StudentDTO> {
 
     void add(const shared_ptr<StudentDTO>& student) override;
     void read(const shared_ptr<StudentDTO> &student) override;
-    void update(const shared_ptr<StudentDTO> &student, const int sel) override;
+    void update(const shared_ptr<StudentDTO> &student) override;
     void del(const shared_ptr<StudentDTO> &student) override;
 
 };
